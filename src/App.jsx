@@ -58,28 +58,42 @@ export default function App() {
       {thongBao && <p role="status">{thongBao}</p>}
 
       <main>
-        <DanhSachMon
-          dsMon={dsMon}
-          idDangChon={idDangChon}
-          onChon={handleChonMon}
-          onDat={handleDatMon}
-        />
-
-        <Khung
-          tieuDe="Giỏ hàng"
-          hanhDong={<button onClick={handleXoaGio}>Xóa giỏ hàng</button>}
-        >
-          <GioHang gio={gio} dsMon={dsMon} />
-        </Khung>
-
-        <Khung tieuDe="Thông tin nhận món">
-          <FormDatMon
-            key={formKey}
-            onGui={handleGuiDon}
-            choPhepGui={gio.length > 0}
+        <section className="menu-section" id="thuc-don">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">MENU</p>
+              <h2>Món ngon mỗi ngày</h2>
+            </div>
+            <p>Những lựa chọn được yêu thích nhất tại quán.</p>
+          </div>
+          <DanhSachMon
+            dsMon={dsMon}
+            idDangChon={idDangChon}
+            onChon={handleChonMon}
+            onDat={handleDatMon}
           />
-        </Khung>
+        </section>
+
+        <div className="order-column" id="dat-mon">
+          <div id="gio-hang">
+            <Khung
+              tieuDe="Giỏ hàng"
+              hanhDong={<button onClick={handleXoaGio}>Xóa giỏ hàng</button>}
+            >
+              <GioHang gio={gio} dsMon={dsMon} />
+            </Khung>
+          </div>
+
+          <Khung tieuDe="Thông tin nhận món">
+            <FormDatMon
+              key={formKey}
+              onGui={handleGuiDon}
+              choPhepGui={gio.length > 0}
+            />
+          </Khung>
+        </div>
       </main>
+      <footer id="lien-he">Mở cửa mỗi ngày · Hẹn gặp bạn tại Quán Huế Xưa</footer>
     </div>
   );
 }
